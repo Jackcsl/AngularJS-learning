@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+    <meta charset="UTF-8">
+    <title>AngularJS-imooc</title>
+    <script src="script/angular-1.3.0.js"></script>
+</head>
+<body>
+
+    <!--实现MVC、模块化-->
+    <!--<div ng-app="myApp" ng-controller="helloAngular">
+        <p>{{greeting.text}},AngularJS</p>
+    </div>
+    <script>
+        var app = angular.module("myApp",[]);
+        app.controller("helloAngular",["$scope",
+            function HelloAngular($scope) {
+                $scope.greeting ={
+                    text : "Hello"
+                }
+            }
+        ])
+    </script>-->
+
+    <!--AngulaJS指令系统,可以自定义标签
+    <hello></hello>
+    <script>
+        var app = angular.module("myApp",[]);
+        app.directive("hello",function () {
+            return {
+                restrict : "E",
+                template : "<div>Hello AngluarJS World</div>",
+                replace : true
+            }
+        })
+    </script>-->
+
+    <!--AngularJS可以双向数据绑定
+    <div>
+        <input type="text" ng-model="greeting.text">
+        <p>{{greeting.text}},AngularJS</p>
+    </div>-->
+
+    <!--<div ng-controller="CommonController">
+        <div ng-controller="Controller1">
+            <p>{{greeting.text}},AngularJS</p>
+            <button ng-click="test1()">test1</button>
+        </div>
+        <div ng-controller="Controller2">
+            <p>{{greeting.text}},AngularJS</p>
+            <button ng-click="test2()">test2</button>
+            <button ng-click="commonFn()">common</button>
+        </div>
+        
+    </div>
+    <script>
+        function CommonController($scope){
+            $scope.commonFn = function(){
+                alert("这是通用的功能")
+            }
+        }
+        function Controller1($scope){
+            $scope.greeting ={
+                text :"Hello1"
+            }
+            $scope.test1 = function(){
+                alert("test1");
+            }
+        }
+        function Controller2($scope){
+            $scope.greeting = {
+                text : "Hello2"
+            }
+            $scope.test2 = function(){
+                alert("test2");
+            }
+        }
+    </script>-->
+
+
+    <!--<div>
+        <input ng-model="greeting.text">        
+        <p>{{greeting.text}},Angular</p>
+    </div>-->
+
+    <!--
+    <div class="show-scope-demo">
+        <div ng-controller="GreetCtrl">
+            Hello {{name}}
+        </div>
+        <div ng-controller="ListCtrl">
+            <ul>
+                <li ng-repeat="name in names">
+                    {{name}} from {{department}}
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script type="text/javascript">
+        function GreetCtrl($scope,$rootScope){
+            $scope.name = "World";
+            $rootScope.department = "Angular";
+        }
+        function ListCtrl($scope){
+            $scope.names = ["jack","jacl","jacj"]
+        }
+    </script>
+    -->
+    <div ng-controller="EventController">
+        Root Scope
+        <tt>My Event</tt> count: {{count}}
+        <ul>
+            <li ng-repeat="i in [1]" ng-controller="EventController">
+                <button ng-click="$emit('MyEvent')">$emit("myEvent")</button>
+                <button ng-click="$broadcast('MyEvent')">$broadcast('MyEvent')</button><br>
+                Middle scope
+                <tt>My Event</tt>count: {{count}}
+                <ul>
+                    <li ng-repeat="item in [1,2]" ng-controller="EventController">Leaf scope
+                        <tt>MyEvent</tt> count: {{count}}
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+        function EventController($scope){
+            $scope.count = 0;
+            $scope.$on("MyEvent",function(){
+                $scope.count++;
+            })
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+

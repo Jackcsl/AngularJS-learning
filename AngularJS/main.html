@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="">
+<head>
+	<meta charset="UTF-8">
+	<title>Angular</title>
+	<script src="script/angular.min.js"></script>
+</head>
+<body>
+	<div ng-controller="MyControler">
+		<h1>Hello {{clock}}</h1>
+	</div>
+	<script>
+		function MyControler($scope,$timeout) {
+			var updateClock = function () {
+				$scope.clock = new Date();
+				$timeout(function () {
+					updateClock();
+				},1000);
+			};
+			updateClock();
+		}
+	</script>
+</body>
+</html>
+/*运行失败*/
