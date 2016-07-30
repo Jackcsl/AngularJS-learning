@@ -1,7 +1,7 @@
 var myCssModule = angular.module('MyCssModule', []);
 myCssModule.controller('HeaderController', ['$scope', function($scope){
 	$scope.isError = false;
-	$scope.inWarning = false;
+	$scope.isWarning = false;
 	$scope.showError = function(){
 		$scope.messageText = "This is an error";
 		$scope.isError = true;
