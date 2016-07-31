@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Input</title>
+	<script type="text/javascript" src="../script/angular-1.3.0.js"></script>
+	<style type="text/css">
+	input.ng-invalid{
+		background-color: lightblue;
+	}
+	</style>
+</head>
+<body>
+	<!-- ng-model指令绑定html元素到应用程序数据
+
+	<div ng-app>
+		<p>Name:<input type="text" ng-model="name"></p>
+		<h3>My Name is: {{name}}</h3>
+	</div> -->
+
+	<!-- ng-init 指令为AngularJs应用程序定义了初始值
+
+	<div ng-app="" ng-init="firstname='jack'">
+		<h3>姓名为: <span ng-bind="firstname"></span></h3>
+	</div> -->
+
+	
+	<!-- 	angularjs表达式
+	<div ng-app="">
+		<span>My first version {{5 + 5}}</span>
+	</div> -->
+
+	<!-- 下面是两种不同的表达方式
+
+	<div ng-app="" ng-init="quanity=1;total=5">
+		<span>Price is {{quanity * total}}</span>
+	</div> -->
+
+	<!-- <div ng-app="" ng-init="quanity=1;total=5">
+		<p>Price is: <span ng-bind="quanity * total"></span></p>
+	</div> -->
+
+	<!-- 下面是两种不同的表达方式
+
+	<div ng-app="" ng-init="firstname='jack';lastname='chen'">
+		<p><span ng-bind="firstname + ' ' + lastname"></span></p>
+	</div> -->
+
+	<!-- <div ng-app="" ng-init="firstname='jack';lastname='chen'">
+		<p>{{firstname + " " + lastname}}</p>
+	</div> -->
+
+	
+	<!-- 下面是两种不同的表达方式
+
+	<div ng-app="" ng-init="person={firstname:'jack',lastname:'chen'}">
+		<p>Name is: {{person.lastname}}</p>
+	</div> -->
+
+	<!-- <div ng-app="" ng-init="person={firstname:'jack',lastname:'chen'}">
+		<p>Name is: <span ng-bind="person.lastname"></span></p>
+	</div> -->
+
+	<!-- 数组的表示方法
+
+	<div ng-app="" ng-init="points=[1,2,3,4,5]">
+		<p><span ng-bind="points[3]"></span></p>
+	</div> -->
+
+	<!-- <div ng-app="MyApp" ng-controller="MyCtrl">
+		Name: <input type="text" ng-model="firstname">
+		<br>
+		Xing: <input type="text" ng-model="lastname">
+		<br>
+		FullName:{{firstname + " " +lastname}}
+	</div>
+	<script type="text/javascript">
+		var myApp = angular.module('MyApp', []);
+		myApp.controller("MyCtrl",function($scope){
+			$scope.firstname = "Jack";
+			$scope.lastname = "chen";
+		})
+	</script> -->
+
+	<!-- angular指令
+
+	<div ng-app="" ng-init="firstname='jack'">
+		<p>在输入框中尝试输入</p>
+		<p>Name: <input type="text" ng-model="firstname"></p>
+		<p>您输入的名字是： {{firstname}}</p>
+	</div> -->
+
+	<!-- 数据绑定
+
+	<div ng-app="" ng-init="quanity=1;total=5">
+		<h2>价格计算器</h2>
+		数量:<input type="number" ng-model="quanity"><br>
+		单价:<input type="number" ng-model="total"><br>
+		<p><b>总价: </b> {{quanity * total}}</p>
+	</div> -->
+
+	<!-- 重复的HTML元素
+
+	<div ng-app="" ng-init="names=['jack','jofl','jrlf']">
+		<ul>
+			<li ng-repeat="name in names">
+				{{name}}
+			</li>
+		</ul>
+	</div> -->
+
+	<!-- ng-repeat应用于一个数组上
+	<div ng-app="" ng-init="names=[
+		{name:'jack',age:22},
+		{name:'jerl',age:34},
+		{name:'jtlg',age:45}
+	]">
+		<ul>
+			<li ng-repeat="x in names">
+				{{x.name + " " + x.age}}
+			</li>
+		</ul>
+	</div> -->
+
+	<!-- 创建自定义的指令,restrice默认为EA(注意在这里事例里运行的话在body或html标签上加上ng-app="MyApp")
+
+	<hello></hello>
+	<div hello></div>
+	<div class="hello"></div>
+	<script type="text/javascript">
+		var myApp = angular.module('MyApp', []);
+		myApp.directive("hello",function(){
+			return {
+				restrict: "ACME",
+				template: "<h1>Hello AngularJS</h1>",
+				replace: true
+			}
+		})
+	</script> -->
+	
+	<!-- ng-module可以将输入域的值与AngularJS创建的值绑定
+
+	<div ng-app="MyApp" ng-controller="MyCtrl">
+		Name: <input type="text" ng-model="name">
+	</div>
+	<script type="text/javascript">
+		var myApp = angular.module('MyApp', []);
+		myApp.controller("MyCtrl",function($scope){
+			$scope.name = "Jack chen";
+		})
+	</script> -->
+
+	<!-- 双向绑定
+
+	<div ng-app="MyApp" ng-controller="MyCtrl">
+		Name: <input type="text" ng-model="name">
+		<h1>You lose: {{name}}</h1>
+	</div>
+	<script type="text/javascript">
+		var myApp = angular.module('MyApp', []);
+		myApp.controller("MyCtrl",function($scope){
+			$scope.name = "jack json";
+		})
+	</script> -->
+
+	<!-- 验证用户输入
+
+	<form ng-app="" name="myForm">
+		Email:<br>
+		<input type="email" name="myAdderss" ng-model="text">
+		<span ng-show="myForm.myAdderss.$error.email">请输入合法的邮箱地址</span>
+	</form>
+	<p>在输入框中输入你的邮箱地址，如果不是一个合法的邮箱地址，会弹出提示信息。</p> -->
+
+	<!-- 应用状态
+	<form ng-app="" name="myForm" ng-init="myText = 'test@1234.com'">
+		Email:
+		<br>
+		<input type="email" name="myAdderss" ng-model="myText" required>
+		<p>编辑邮箱地址，查看状态的改变。</p>
+		<h1>状态</h1>
+		<p>Valid:{{myForm.myAdderss.$valid}} (如果输入的值是合法的则为 true)。</p>
+		<p>Dirty:{{myForm.myAdderss.$dirty}} (如果值改变则为 true)。</p>
+		<p>Touched: {{myForm.myAddress.$touched}} (如果通过触屏点击则为 true)。</p>
+	</form> -->
+
+	
+	<!-- <form ng-app="">
+		<input type="text" ng-model="myText" required>
+	</form>
+	<p>编辑文本域，不同状态背景颜色会发送变化。</p>
+	<p>文本域添加了 required 属性，该值是必须的，如果为空则是不合法的。</p> -->
+
+	<!-- scope的使用
+	<div ng-app="MyApp" ng-controller="MyCtrl">
+		<h1>{{carname}}</h1>
+	</div>
+	<script type="text/javascript">
+		var myApp = angular.module("MyApp",[]);
+		myApp.controller("MyCtrl",function($scope){
+			$scope.carname = "BMW";
+		})
+	</script> -->
+
+	<!-- scope概述
+	<div ng-app="MyApp" ng-controller="MyCtrl">
+		<input type="text" ng-model="name">
+		<h1>My name is {{name}}</h1>
+	</div>
+	<p>当你修改输入框中的值时，会影响到模型(model),当然也会影响到控制器对应的属性值。</p>
+	<script type="text/javascript">
+		var myApp = angular.module('MyApp', []);
+		myApp.controller("MyCtrl",function($scope){
+			$scope.name = "Jack json";
+		})
+	</script> -->
+
+	<!-- scope的作用范围 在这个例子中，scope只有一个作用范围
+	<div ng-app="MyApp" ng-controller="MyCtrl">
+		<ul>
+			<li ng-repeat="x in names">
+				{{x}}
+			</li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+		var myApp = angular.module('MyApp', []);
+		myApp.controller("MyCtrl",function($scope){
+			$scope.names = ["jacl","jrew","jgke"];
+		})
+	</script> -->
+
+	<!-- 根作用域rootScope
+	<div ng-app="MyApp" ng-controller="MyCtrl">
+		<h1>姓氏为{{lastname}}的家庭成员</h1>
+		<ul>
+			<li ng-repeat="x in names">{{x}} {{lastname}}</li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+		var myApp = angular.module('MyApp', []);
+		myApp.controller("MyCtrl",function($scope,$rootScope){
+			$scope.names = ["jadl","jwer","jrqwr"];
+			$rootScope.lastname = "chen";
+		})
+	</script> -->
+
+	<!-- AngularJS控制器
+	<div ng-app="MyApp" ng-controller="MyCtrl">
+		Name: <input type="text" ng-model="firstname"><br>
+		Xing: <input type="text" ng-model="lastname"><br>
+		FullName:{{fullname()}}
+	</div>
+	<script type="text/javascript">
+		var myApp = angular.module('MyApp', []);
+		myApp.controller("MyCtrl",function($scope){
+			$scope.firstname = "jack";
+			$scope.lastname = "json";
+			$scope.fullname = function(){
+				return $scope.firstname + $scope.lastname;
+			}
+		})
+	</script> -->
+
+	<!-- 表达式中添加过滤器
+	<div ng-app="MyApp" ng-controller="MyCtrl">
+		<p>Name is: {{firstname | uppercase}}</p>
+		<p>Name is: {{lastname | lowercase}}</p>
+	</div>
+	<script type="text/javascript">
+		var myApp = angular.module("MyApp",[]);
+		myApp.controller("MyCtrl",function($scope){
+			$scope.firstname = "jack";
+			$scope.lastname = "Chen";
+			$scope.fullname = function(){
+				return $scope.firstname + $scope.lastname;
+			}
+		})
+	</script> -->
+	
+	<!-- currency 过滤器
+	<div ng-app="MyApp" ng-controller="MyCtrl">
+		数量:<input type="number" ng-model="quanity">
+		单价:<input type="number" ng-model="total"><br>
+		总价:{{(quanity * total) | currency}}
+	</div>
+	<script type="text/javascript">
+		var myApp = angular.module('MyApp', []);
+		myApp.controller("MyCtrl",function($scope){
+			$scope.quanity = 5;
+			$scope.total = 1;
+		})
+	</script> -->
+
+	<!-- 向指令添加过滤器
+	<div ng-app="MyApp" ng-controller="MyCtrl">
+		循环对象:<br>
+		<ul>
+			<li ng-repeat="x in names | orderBy:'country'">
+				{{x.name + "," + x.country}}
+			</li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+		var myApp = angular.module('MyApp', []);
+		myApp.controller("MyCtrl",function($scope){
+			$scope.names = [
+				{name:"jacl",country:"A"},
+				{name:"jrwe",country:"B"},
+				{name:"jtre",country:"C"}
+			]
+		})
+	</script> -->
+
+	<!-- 过滤输入
+	<div ng-app="MyApp" ng-controller="MyCtrl">
+		输入过滤：<br>
+		<input type="text" ng-model="test">
+		<ul>
+			<li ng-repeat="x in names | filter:test | orderBy:country">
+				{{(x.name | uppercase) + " " + x.country}}
+			</li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+		var myApp = angular.module('MyApp', []);
+		myApp.controller("MyCtrl",function($scope){
+			$scope.names = [
+				{name:"jacl",country:"A"},
+				{name:"jrwe",country:"B"},
+				{name:"jtre",country:"C"}
+			]
+		})
+	</script> -->
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

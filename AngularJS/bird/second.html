@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Second</title>
+	<script type="text/javascript" src="../script/angular-1.3.0.js"></script>
+</head>
+<body>
+	<!-- 什么是服务
+	<div ng-app="MyApp" ng-controller="MyCtrl">
+		<p>当前页面的url是:</p>
+		<h3>{{myUrl}}</h3>
+		<p>该实例使用了内建的 $location 服务获取当前页面的 URL。</p>
+	</div>
+	<script type="text/javascript">
+		var myApp = angular.module('MyApp', []);
+		myApp.controller("MyCtrl",function($scope,$location){
+			$scope.myUrl = $location.absUrl();
+		})
+	</script> -->
+
+	<!-- $http服务 (注意该例子存在跨域问题，因为不能正确读出)
+	<div ng-app="MyApp" ng-controller="MyCtrl">
+		<p>欢迎信息</p>
+		<h1>{{myWelcome}}</h1>
+	</div>
+	<p> $http 服务向服务器请求信息，返回的值放入变量 "myWelcome" 中。</p>
+	<script type="text/javascript">
+		var myApp = angular.module('MyApp', []);
+		myApp.controller("MyCtrl",function($scope,$http){
+			$http.get("first.html").then(function(response){
+				$scope.myWelcome = response.data;
+			})
+		})
+	</script> -->
+
+	<!-- $timeout服务 
+	<div ng-app="MyApp" ng-controller="MyCtrl">
+		<p>两秒后显示信息</p>
+		<h1>{{timeout}}</h1>
+		<p>$timeout 访问在规定的毫秒数后执行指定函数。</p>
+	</div>
+	<script type="text/javascript">
+		var myApp = angular.module('MyApp', []);
+		myApp.controller("MyCtrl",function($scope,$timeout){
+			$scope.timeout = "Hello Angular";
+			$timeout(function(){
+				$scope.timeout = "How are you today";
+			},2000);
+		})
+	</script> -->
+
+	<!-- $interval服务 (顺便看看toLocalString()和toLocalTimeString()的区别哟)
+	<div ng-app="MyApp" ng-controller="MyCtrl">
+		<p>现在时间是：</p>
+		<h1>{{theTime}}</h1>
+		<p>$interval 访问在指定的周期(以毫秒计)来调用函数或计算表达式。</p>
+	</div>
+	<script type="text/javascript">
+		var myApp = angular.module('MyApp', []);
+		myApp.controller("MyCtrl",function($scope,$interval){
+			$scope.theTime = new Date().toLocaleTimeString();
+			$interval(function(){
+				$scope.theTime = new Date().toLocaleTimeString();
+			},1000);
+		})
+	</script> -->
+	
+	<!-- 创建自定义服务
+	<div ng-app="MyApp" ng-controller="MyCtrl">
+		255的16进制是：
+		<h1>{{hex}}</h1>
+		<p>自定义服务，用于转换16进制数：</p>
+	</div>
+	<script type="text/javascript">
+		var myApp = angular.module('MyApp', []);
+		myApp.service("hexafy",function(){
+			this.myFunc = function(x){
+				return x.toString(16);
+			}
+		});
+		myApp.controller("MyCtrl",function($scope,hexafy){
+			$scope.hex = hexafy.myFunc(255);
+		})
+	</script> -->
+
+	<!-- 过滤器中使用自定义服务
+	<div ng-app="MyApp">
+		<p>在过滤器中使用服务:</p>
+		<h1>{{255 | myFormat}}</h1>
+	</div>
+	<script type="text/javascript">
+		var myApp = angular.module('MyApp', []);
+		myApp.service("hexafy",function(){
+			this.myFunc = function(x){
+				return x.toString(16);
+			}
+		})
+		myApp.filter("myFormat",["hexafy",function(hexafy){
+			return function(x){
+				return hexafy.myFunc(x);
+			}
+		}]);
+	</script> -->
+
+	<!-- <div ng-app="MyApp" ng-controller="MyCtrl">
+		<p>在获取数组 [255, 251, 200] 值时使用过滤器:</p>
+		<ul>
+			<li ng-repeat="x in count">
+				{{x | myFormat}}
+			</li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+		var myApp = angular.module('MyApp', []);
+		myApp.service("hexafy",function(){
+			this.myForm = function(x){
+				return x.toString(16);
+			}
+		})
+		myApp.filter("myFormat",["hexafy",function(hexafy){
+			return function(x){
+				return hexafy.myForm(x);
+			}
+		}])
+		myApp.controller("MyCtrl",function($scope){
+			$scope.count = [255,251,200];
+		})
+	</script> -->
+
+	
+</body>
+</html>
+
+
+
+
+
+
+

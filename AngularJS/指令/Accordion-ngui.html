@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="MyModule">
+<head>
+	<meta charset="UTF-8">
+	<title>Accrodion-ngui</title>
+	<link rel="stylesheet" type="text/css" href="../style/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="style/common.css">
+	<script type="text/javascript" src="../script/angular-1.3.0.js"></script>
+	<script type="text/javascript" src="js/ui-bootstrap-tpls-0.11.0.js"></script>
+	<script type="text/javascript" src="script/Accordion-ngui.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div ng-controller="AccordionDemoCtrl">
+					<p>
+						<button class="btn btn-default btn-md" ng-click="status.isFirstDisabled" = ! status.isfirstDisabled>Enable / Disable firse panel</button>
+
+						<p>
+							<label class="checkbox">
+								<input type="checkbox" ng-model="oneAtTime">Open only one at a time
+							</label>
+							<accordion close-others="oneAtTime">
+								<accordion-group heading="Static Header, initially expanded" is-open="status.isFirstOpen" is-disabled="status.isFirstDisabled">
+									This content is straight in the template
+								</accordion-group>
+							</accordion>
+						</p>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
