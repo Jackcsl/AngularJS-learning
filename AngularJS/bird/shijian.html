@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>AngularJS事件</title>
+	<script type="text/javascript" src="../script/angular-1.3.0.js"></script>
+</head>
+<body>
+	<!-- <div ng-app="MyApp" ng-controller="MyCtrl">
+		<button ng-click="count = count + 1">click me</button>
+		<p>{{count}}</p>
+	</div>
+	<script type="text/javascript">
+		var myApp = angular.module('MyApp', []);
+		myApp.controller("MyCtrl",function($scope){
+			$scope.count = 0;
+		})
+	</script> -->
+
+	<!-- <div ng-app="MyApp" ng-controller="MyCtrl">
+		<button ng-click="toggle()">显示／隐藏</button>
+		<p ng-hide="myVar">
+			Xing: <input type="text" ng-model="firstname"><br>
+			Ming: <input type="text" ng-model="lastname"><br>
+			FullName: {{firstname + " " + lastname}}
+		</p>
+	</div>
+	<script type="text/javascript">
+		var myApp = angular.module('MyApp', []);
+		myApp.controller("MyCtrl",function($scope){
+			$scope.myVar = false;
+			$scope.firstname = "jack";
+			$scope.lastname = "chen";
+			$scope.toggle = function(){
+				$scope.myVar = !$scope.myVar;
+			}
+		})
+	</script> -->
+
+	<!-- <div ng-app="MyApp" ng-controller="MyCtrl">
+		<button ng-click="toggle()">显示／隐藏</button>
+		<p ng-show="myVar">
+			Xing: <input type="text" ng-model="person.firstname"><br>
+			Ming: <input type="text" ng-model="person.lastname"><br>
+			FullName: {{person.firstname + " " + person.lastname}}
+		</p>
+	</div>
+	<script type="text/javascript">
+		var myApp = angular.module('MyApp', []);
+		myApp.controller("MyCtrl",function($scope){
+			$scope.person = {
+				firstname: "jack",
+				lastname: "chen"
+			};
+			$scope.myVar = true;
+			$scope.toggle = function(){
+				$scope.myVar = !$scope.myVar;
+			}
+		})
+	</script> -->
+	
+	<!--novalidate 属性规定当提交表单时不对其进行验证。-->
+	<div ng-app="MyApp" ng-controller="MyCtrl">
+		<form novalidate>
+			FirstName:<br>
+			<input type="text" ng-model="user.firstname"><br>
+			LastName:<br>
+			<input type="text" ng-model="user.lastname"><br>
+			<button ng-click="reset()">重置</button>
+			<p>form = {{user}}</p>
+			<p>master = {{master}}</p>
+		</form>
+	</div>
+	<script type="text/javascript">
+		var myApp = angular.module('MyApp', []);
+		myApp.controller("MyCtrl",function($scope){
+			$scope.master = {firstname:"jack",lastname:"chen"};
+			$scope.reset = function(){
+				$scope.user = angular.copy($scope.master)
+			};
+			$scope.reset();
+		})
+	</script>
+</body>
+</html>
+
+
+
+
+
+

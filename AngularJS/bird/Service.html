@@ -128,7 +128,21 @@
 		})
 	</script> -->
 
-	
+	<!-- $http 因为跨域问题不能正确读出内容，详细做法参见教程。
+	<div ng-app="MyApp" ng-controller="MyCtrl">
+		<ul>
+			<li ng-repeat="x in names">
+				{{x.Name + "," + x.Country}}
+			</li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+		var myApp = angular.module('MyApp', []);
+		myApp.controller("MyCtrl",function($http,$scope){
+			$http.get("http://www.jackchen.xyz").success(function(response){$scope.names = response.records})
+		})
+	</script> -->
+
 </body>
 </html>
 
